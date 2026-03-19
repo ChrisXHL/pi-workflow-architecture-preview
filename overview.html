@@ -28,37 +28,57 @@
     }
     .app { display: flex; flex-direction: column; min-height: 100vh; }
     .topbar {
-      padding: 20px 28px 16px;
+      padding: 14px 18px 10px;
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.78);
       position: sticky;
       top: 0;
       z-index: 30;
     }
-    .topbar h1 { margin: 0 0 6px; font-size: 28px; line-height: 1.15; }
-    .subtitle { color: var(--muted); max-width: 960px; line-height: 1.55; }
-    .meta-row { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: center; margin-top: 14px; }
+    .topbar h1 { margin: 0 0 4px; font-size: 22px; line-height: 1.15; }
+    .subtitle {
+      color: var(--muted);
+      max-width: 1200px;
+      line-height: 1.45;
+      font-size: 14px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
+    .meta-row { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin-top: 10px; }
     .chip, .tab {
       border: 1px solid var(--border);
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.88);
       border-radius: 999px;
-      padding: 7px 12px;
-      font-size: 13px;
+      padding: 6px 10px;
+      font-size: 12px;
       color: var(--text);
     }
     .tab { cursor: pointer; }
     .tab.active { background: #0f172a; color: white; border-color: #0f172a; }
-    .controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .controls {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 8px;
+      margin-top: 10px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .controls::-webkit-scrollbar,
+    .highlights::-webkit-scrollbar { display: none; }
     button, a.button-link {
+      flex: 0 0 auto;
       border: 1px solid var(--border);
       background: var(--panel-solid);
-      border-radius: 12px;
-      padding: 10px 14px;
+      border-radius: 10px;
+      padding: 8px 10px;
       cursor: pointer;
       text-decoration: none;
       color: var(--text);
-      font-size: 14px;
+      font-size: 13px;
       box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
     }
     button:hover, a.button-link:hover { border-color: rgba(37,99,235,0.35); }
@@ -144,15 +164,79 @@
     .section h3 { margin: 0 0 8px; font-size: 14px; }
     .section p, .section li { color: #334155; line-height: 1.55; font-size: 14px; }
     ul { margin: 0; padding-left: 18px; }
-    .highlights { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .highlight { background: rgba(37,99,235,0.08); color: #1d4ed8; border-radius: 999px; padding: 6px 10px; font-size: 12px; }
+    .highlights {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 6px;
+      margin-top: 10px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .highlight {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      background: rgba(37,99,235,0.08);
+      color: #1d4ed8;
+      border-radius: 999px;
+      padding: 5px 8px;
+      font-size: 11px;
+    }
     .legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
     .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #334155; }
     .swatch { width: 14px; height: 14px; border-radius: 999px; border: 1px solid rgba(15,23,42,0.12); }
     .presentation .details { font-size: 1.05em; }
     .presentation .node-label { font-size: 17px; }
     .presentation .annotation { font-size: 13px; }
-    @media (max-width: 1200px) { .main { grid-template-columns: 1fr; } .viewport { min-height: 680px; } }
+    @media (max-width: 1200px) {
+      .main { grid-template-columns: 1fr; }
+      .viewport { min-height: 680px; }
+    }
+    @media (max-width: 720px) {
+      .topbar {
+        padding: 10px 12px 8px;
+      }
+      .topbar h1 {
+        font-size: 18px;
+        margin-bottom: 2px;
+      }
+      .subtitle {
+        font-size: 12px;
+      }
+      #generatedAt,
+      #prdLink,
+      #presentationMode,
+      #reset,
+      .highlights {
+        display: none;
+      }
+      .meta-row {
+        margin-top: 8px;
+        gap: 6px 8px;
+      }
+      .chip, .tab {
+        padding: 5px 9px;
+        font-size: 11px;
+      }
+      .controls {
+        margin-top: 8px;
+      }
+      button, a.button-link {
+        padding: 7px 9px;
+        font-size: 12px;
+      }
+      .main {
+        gap: 10px;
+        padding: 10px 10px 16px;
+      }
+      .viewport {
+        min-height: 540px;
+      }
+      .details {
+        padding: 16px;
+        gap: 12px;
+      }
+    }
   </style>
 </head>
 <body>
